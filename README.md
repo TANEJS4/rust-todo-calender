@@ -12,7 +12,7 @@ This is my first Rust project and i decided to keep it simple but i do plan to m
     - link with other items (like how jira work)
     - link relationship
 
-- [ ] add item to list
+- [x] add item to list
 
 - [ ] update an item in list
 
