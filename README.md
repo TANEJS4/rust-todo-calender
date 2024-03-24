@@ -15,7 +15,7 @@ This is my first Rust project and i decided to keep it simple but i do plan to m
 
 - [x] add item to list
 
-- [ ] update an item in list
+- [x] update an item in list
 
 - [ ] delete one or more item by name
 

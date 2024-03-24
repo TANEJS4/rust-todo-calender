@@ -34,7 +34,7 @@ impl<'a> TodoList<'a> {
             }
         }
     }
-    pub fn update_item(&mut self, id:u32) {
+    pub fn delete_item(&mut self, id:u32) {
         let mut idx = 0;
         for item in &self.items {
             idx =  if item.id==id { idx } else { _inc(idx) };
