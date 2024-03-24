@@ -1,6 +1,5 @@
-
-use chrono::{DateTime, Local};
 use crate::structs::enums as Types;
+use chrono::{DateTime, Local};
 use core::fmt;
 
 #[allow(non_snake_case)]
@@ -24,7 +23,7 @@ impl<'a> Default for Todoitem<'a> {
             id: 0,
             title: "hellow",
             _date_created: Local::now(),
-            date_modified :Local::now(),
+            date_modified: Local::now(),
             is_completd: false,
             due_date: None,
             status: Some(Types::Status::Todo),

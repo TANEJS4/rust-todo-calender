@@ -1,5 +1,6 @@
 # Todo-Calender app 
 > in rust
+> 
 > Date started:  2024-03-24
 
 This is my first Rust project and i decided to keep it simple but i do plan to make it featureful by adding calendar UI, reminders, run it on cloud with email services. but as of now, the plan is to achieve the following:
@@ -15,9 +16,9 @@ This is my first Rust project and i decided to keep it simple but i do plan to m
 
 - [x] add item to list
 
-- [x] update an item in list
+- [ ] update an item in list
 
-- [ ] delete one or more item by name
+- [x] delete one or more item by name
 
 - [ ] filter options by status and due date
 
