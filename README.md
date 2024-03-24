@@ -1,5 +1,6 @@
 # Todo-Calender app 
- 	> in rust
+> in rust
+> Date started:  2024-03-24
 
 This is my first Rust project and i decided to keep it simple but i do plan to make it featureful by adding calendar UI, reminders, run it on cloud with email services. but as of now, the plan is to achieve the following:
 - [ ] add Todo Item and it may include
