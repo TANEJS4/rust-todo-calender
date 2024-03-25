@@ -1,16 +1,24 @@
-// use crate::structs::Todoitem as Todoitem;
+use chrono::{DateTime, Local};
+use crate::structs::enums as Types;
 use crate::structs::Todoitem::Todoitem;
+use crate::utils::_inc as _inc;
 
-// mod Todoitem;
-#[allow(non_snake_case)]
-#[allow(dead_code)]
+#[allow(non_snake_case,dead_code)]
+// #[derive(Serialize, Deserialize)]
 pub struct TodoList<'a> {
     pub items: Vec<Todoitem<'a>>,
 }
 
-fn _inc(mut x: u32) -> u32 {
-    x = x + 1;
-    x
+
+
+impl<'a>  FromIterator<Todoitem<'a>> for TodoList<'a>  {
+    fn from_iter<T: IntoIterator<Item = Todoitem<'a>> >  (iter: T) -> Self {
+        let mut c =  TodoList { items: Vec::new() };
+        for i in iter {
+            c.add_item(i)
+        }
+        c
+    }
 }
 /// id -> id of Todoitem
 /// idx -> index of TodoList
@@ -44,15 +52,45 @@ impl<'a> TodoList<'a> {
         }
         self.items.remove(idx.try_into().unwrap());
     }
-    
+
     pub fn get(&self, idx: usize) -> Option<&Todoitem<'_>> {
         let vec = self.items.get(idx);
         vec
     }
 
-    pub fn update(&mut self, id:u32, new_item: Todoitem<'a>){
+    pub fn update(&mut self, id: u32, new_item: Todoitem<'a>) {
         self.delete_item(id);
         self.add_item(new_item);
         print!("Item updated");
+    }
+    pub fn filter(
+        &mut self,
+        on: &str,
+        target: Option<Types::Status>,
+        key: Option<DateTime<Local>>,
+    ) -> Option<TodoList<'a>> {
+        match on {
+            "status" => {
+                print!("status based filtering");
+                Some(self.helperFilterStatus(target.unwrap()))
+            }
+            "date" => {
+                print!("due date based filtering");
+                Some(self.helperFilterDate(key.unwrap()))
+            }
+            _ => {
+                print!("Not valid, use 'status' or 'date'");
+                None
+            }
+        }
+    }
+    fn helperFilterStatus(&mut self, target: Types::Status) ->TodoList<'a>{
+         self.items
+            .drain(..).filter(|x_item| x_item.status==target).collect()
+        
+    }
+    fn helperFilterDate(&mut self, key: DateTime<Local>) ->TodoList<'a>{
+        self.items
+        .drain(..).filter(|x_item| x_item.due_date.unwrap()==key).collect()       
     }
 }

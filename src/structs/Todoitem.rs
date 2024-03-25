@@ -1,7 +1,9 @@
-use crate::structs::enums as Types;
+
 use chrono::{DateTime, Local};
+use crate::structs::enums as Types;
 use core::fmt;
 
+    
 #[allow(non_snake_case)]
 pub struct Todoitem<'a> {
     pub id: u32,
@@ -11,11 +13,12 @@ pub struct Todoitem<'a> {
     pub date_modified: DateTime<Local>,
     pub is_completd: bool,
     pub due_date: Option<DateTime<Local>>,
-    pub status: Option<Types::Status>,
+    pub status: Types::Status,
     //TODO: need to link another todoitem but recursive structs are not allowed in rust.
     pub link: Option<u32>,
     pub linkRel: Option<Types::LinkRelation>,
 }
+
 
 impl<'a> Default for Todoitem<'a> {
     fn default() -> Todoitem<'a> {
@@ -23,10 +26,10 @@ impl<'a> Default for Todoitem<'a> {
             id: 0,
             title: "hellow",
             _date_created: Local::now(),
-            date_modified: Local::now(),
+            date_modified :Local::now(),
             is_completd: false,
             due_date: None,
-            status: Some(Types::Status::Todo),
+            status: Types::Status::Todo,
             link: None,
             linkRel: None,
         }
